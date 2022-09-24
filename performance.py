@@ -44,3 +44,19 @@ class electric_endurance(csdl.Model):
         self.register_output('endurance',endurance)
 
 
+class dynamic_pressure(csdl.Model):
+    def initialize(self):
+        pass
+    def define(self):
+        
+        density = self.declare_variable('density')
+        velocity = self.declare_variable('velocity')
+
+        self.register_output('dynamic_pressure',0.5*density*velocity**2)
+
+
+class max_sustained_turn_load(csdl.Model):
+    def initialize(self):
+        pass
+    def define(self):
+        pass
