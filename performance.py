@@ -59,4 +59,11 @@ class max_sustained_turn_load(csdl.Model):
     def initialize(self):
         pass
     def define(self):
-        pass
+        s = self.declare_variable('wing_area')
+        q = self.declare_variable('dynamic_pressure')
+        cl_max = self.declare_variable('cl_max')
+        w = self.declare_variable('total_weight')
+
+        n_max = q*s*cl_max/w
+
+        self.register_output('sustained_turn_load',n_max)
