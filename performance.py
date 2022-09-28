@@ -34,12 +34,12 @@ class electric_endurance(csdl.Model):
         pass
     def define(self):
         
-        battery_mass = self.declare_variable('battery_mass') # (kg)
-        battery_specific_energy = self.declare_variable('battery_specific_energy') # (wh/kg)
-        drivetrain_efficiency = self.declare_variable('drivetrain_efficiency') # not including prop efficiency
-        required_power = self.declare_variable('required_power') # average power used (w)
+        mb = self.declare_variable('battery_mass') # (kg)
+        esb = self.declare_variable('battery_specific_energy') # (wh/kg)
+        eta_b2s = self.declare_variable('drivetrain_efficiency') # not including prop efficiency
+        p_used = self.declare_variable('required_power') # average power used (w)
 
-        endurance = (battery_mass*battery_specific_energy*drivetrain_efficiency)/required_power
+        endurance = (mb*esb*eta_b2s)/p_used
 
         self.register_output('endurance',endurance)
 
